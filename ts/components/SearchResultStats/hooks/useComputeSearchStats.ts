@@ -39,7 +39,6 @@ const calculateBoxOfficeStrdDeviation = (
     const cleanValue = cleanDollarValue(current.BoxOffice);
     const boxOfficeMeanDifference = cleanValue - boxOfficeMean;
     const differenceSquared = Math.pow(boxOfficeMeanDifference, 2);
-    console.log(cleanValue);
 
     return previous + differenceSquared;
   }, 0);

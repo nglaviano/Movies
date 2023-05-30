@@ -48,11 +48,7 @@ const Root = () => {
       <View style={styles.searchBarContainer}>
         <SearchBar onSubmit={onSubmitSearch} placeholderText="Search Movies" />
       </View>
-      <ScrollView
-        style={{
-          flex: 1,
-        }}
-      >
+      <ScrollView style={styles.scrollview}>
         {searchResults.map((movie, index) => (
           <Movie
             key={`${movie.Title} (${movie.Released})`}
@@ -80,6 +76,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     justifyContent: "flex-start",
+  },
+  scrollview: {
+    flex: 1,
   },
   searchBarContainer: {
     paddingHorizontal: 10,
