@@ -43,11 +43,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 5,
     padding: 5,
+    backgroundColor: colors.white,
   },
   bottomBorder: {
     borderBottomWidth: 1,
     borderBottomColor: colors.gray,
-    backgroundColor: colors.white,
   },
   divider: {
     height: 1,
