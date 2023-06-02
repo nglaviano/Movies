@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import {
+  FlatList,
   Image,
   Pressable,
   SafeAreaView,
@@ -48,15 +49,13 @@ const Root = () => {
       <View style={styles.searchBarContainer}>
         <SearchBar onSubmit={onSubmitSearch} placeholderText="Search Movies" />
       </View>
-      <ScrollView style={styles.scrollview}>
-        {searchResults.map((movie, index) => (
-          <Movie
-            key={`${movie.Title} (${movie.Released})`}
-            movie={movie}
-            isExpanded={index === 0}
-          />
-        ))}
-      </ScrollView>
+      <FlatList
+        data={searchResults}
+        renderItem={({ item, index }) => (
+          <Movie isExpanded={index === 0} movie={item} />
+        )}
+        keyExtractor={(item) => `${item.Title} (${item.Released})`}
+      />
       <SearchResultsStats
         searchResults={searchResults}
         resetSearchResults={() => {
