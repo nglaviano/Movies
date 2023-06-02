@@ -1,14 +1,10 @@
-import { StatusBar } from "expo-status-bar";
 import {
   FlatList,
-  Image,
-  Pressable,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
-  Text,
-  TextInput,
   View,
+  StatusBar,
+  Platform,
 } from "react-native";
 import { colors } from "./styleguide";
 import { Movie, SearchBar, SearchResultsStats } from "./components";
@@ -45,7 +41,7 @@ const Root = () => {
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
-      <StatusBar style="auto" />
+      <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
       <View style={styles.searchBarContainer}>
         <SearchBar onSubmit={onSubmitSearch} placeholderText="Search Movies" />
       </View>
@@ -75,6 +71,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     justifyContent: "flex-start",
+    marginTop: Platform.OS === "android" ? 10 : 0,
+    overflow: "hidden",
   },
   scrollview: {
     flex: 1,
@@ -86,6 +84,7 @@ const styles = StyleSheet.create({
     shadowColor: colors.grayer,
     shadowOffset: { height: 5, width: 0 },
     shadowOpacity: 0.1,
+    elevation: 15,
   },
 });
 
