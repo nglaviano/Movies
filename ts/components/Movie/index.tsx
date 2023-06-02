@@ -7,7 +7,7 @@ import { isMovieDataAvailable } from "../../utils";
 
 type Props = {
   movie: GetSearchResultsSuccess;
-  index: number;
+  isExpanded: boolean;
 };
 
 const MovieDetail = ({
@@ -26,9 +26,9 @@ const MovieDetail = ({
     <></>
   );
 
-const Movie = memo(({ movie, index }: Props) => {
+const Movie = memo(({ movie, isExpanded }: Props) => {
   return (
-    <Accordion heading={movie.Title} index={index}>
+    <Accordion heading={movie.Title} isExpanded={isExpanded}>
       <Image
         source={{ uri: movie.Poster }}
         style={styles.poster}

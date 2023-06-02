@@ -53,7 +53,7 @@ const Root = () => {
           <Movie
             key={`${movie.Title} (${movie.Released})`}
             movie={movie}
-            index={index}
+            isExpanded={index === 0}
           />
         ))}
       </ScrollView>

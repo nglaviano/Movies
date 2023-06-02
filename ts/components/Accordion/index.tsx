@@ -6,20 +6,20 @@ import { colors, font } from "../../styleguide";
 type Props = {
   heading: string;
   children: JSX.Element[];
-  index: number;
+  isExpanded: boolean;
 };
 
-const Accordion = ({ heading, children, index }: Props) => {
-  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>();
+const Accordion = ({ heading, children, isExpanded }: Props) => {
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(isExpanded);
 
   useEffect(() => {
-    setIsAccordionOpen(index === 0);
-  }, [index]);
+    setIsAccordionOpen(isExpanded);
+  }, [isExpanded]);
 
   return (
     <>
       <TouchableOpacity
-        style={styles.heading}
+        style={[styles.heading, !isAccordionOpen && styles.bottomBorder]}
         onPress={() => {
           setIsAccordionOpen((prev) => !prev);
         }}
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 5,
     padding: 5,
+  },
+  bottomBorder: {
     borderBottomWidth: 1,
     borderBottomColor: colors.gray,
     backgroundColor: colors.white,
